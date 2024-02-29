@@ -1,9 +1,12 @@
 <view class="container">
-  <view class="search-section">
-    <form bindsubmit="onSearchSubmit">
-      <input class="search-input" type="text" placeholder="再次输入搜索词汇" />
-      <button formType="submit">搜索</button>
+  <view class="weui-search-bar" id="searchBar">
+    <form bindsubmit="onSearchSubmit"> <!-- 绑定表单的提交事件 -->
+      <div class="weui-search-bar__box" bind:tap="onSearchIconClick">
+        <i class="weui-icon-search"></i>
+        <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="再次输入搜索词汇" required focus="{{inputFocus}}" bindinput="onSearchInput" bindconfirm="onSearchSubmit"/>
+      </div>
     </form>
+    
   </view>
   <view class="results-section">
     <block wx:for="{{searchResults}}" wx:key="unique">
