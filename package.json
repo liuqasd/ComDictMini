@@ -1,0 +1,9 @@
+{
+  "name": "weui",
+  "version": "1.0.0",
+  "description": "weui",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "weui-miniprogram": "^1.3.1"
+  }
+}

@@ -1,0 +1,37 @@
+/* 搜索框外部样式，添加左右边距 */
+.weui-search-bar {
+  width: calc(100% - 30px); /* 减去左右边距的宽度 */
+  margin: 0 15px; /* 左右各添加10px边距 */
+  background-color: white;
+  padding: 0px 15px;
+  border-radius: 5px;
+}
+
+.weui-search-bar__box {
+  display: flex;
+  width: 100%;
+  padding: 0px 12px; /* 减少上下内边距，左右保持不变 */
+  background-color: white;
+  display: flex;
+  align-items: center;  /* 垂直居中 */
+  justify-content: center;  /* 水平居中 */
+}
+
+.weui-search-bar__input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+}
+
+.weui-icon-clear, .weui-icon-search {
+  padding: 0 7px;
+  font-size: 20px;
+  color: #b2b2b2;
+}
+
+/* 增加功能列表宽度 */
+.custom-weui-cells {
+  width: 100%; /* 设置功能列表宽度为100% */
+}

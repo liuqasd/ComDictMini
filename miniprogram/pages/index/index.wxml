@@ -1,0 +1,20 @@
+<view>
+  <view class="weui-search-bar" id="searchBar">
+    <form bindsubmit="onSearchSubmit"> <!-- 绑定表单的提交事件 -->
+    <div class="weui-search-bar__box" bind:tap="onSearchIconClick">
+      <i class="weui-icon-search"></i>
+      <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required focus="{{inputFocus}}" bindinput="onSearchInput" bindconfirm="onSearchSubmit"/>
+    </div>
+    <button formType="submit" hidden></button> <!-- 隐藏的提交按钮 -->
+    </form>
+  </view>
+
+  <!-- 功能列表区域 -->
+  <view class="weui-cells custom-weui-cells">
+    <navigator url="/pages/popular/popular" class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <text>热门搜索</text>
+      </view>
+    </navigator>
+  </view>
+</view>

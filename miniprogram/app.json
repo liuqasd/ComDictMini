@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/searchResult/searchResult",
+    "pages/termDetail/termDetail",
+    "pages/favorites/favorites"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "计算机专业术语词典",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "/images/index.png",
+      "selectedIconPath": "/images/index_activate.png"
+    }, {
+      "pagePath": "pages/home/home",
+      "text": "我的",
+      "iconPath": "/images/home.png",
+      "selectedIconPath": "/images/home_activate.png"
+    }],
+    "color": "#7A7E83",
+    "selectedColor": "#07C160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

@@ -1,0 +1,26 @@
+.container {
+  padding: 20px;
+}
+
+.search-section form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  }
+  
+  .results-section {
+  display: flex;
+  flex-direction: column;
+  }
+  
+  .result-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  }

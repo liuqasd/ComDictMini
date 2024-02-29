@@ -1,0 +1,11 @@
+<view class="container">
+  <block wx:for="{{favorites}}" wx:key="unique">
+    <view class="favorite-item">
+      <text>{{item.word}}</text>
+      <button class="unfavorite-button" data-id="{{item.id}}" bindtap="onUnfavorite">取消收藏</button>
+    </view>
+  </block>
+  <view wx:if="{{favorites.length == 0}}">
+    <text>您还没有收藏任何术语。</text>
+  </view>
+</view>

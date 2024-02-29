@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="search-section">
+    <form bindsubmit="onSearchSubmit">
+      <input class="search-input" type="text" placeholder="再次输入搜索词汇" />
+      <button formType="submit">搜索</button>
+    </form>
+  </view>
+  <view class="results-section">
+    <block wx:for="{{searchResults}}" wx:key="unique">
+      <view class="result-item">
+        <text>{{item.word}}</text>
+        <text>{{item.translation}}</text>
+      </view>
+    </block>
+    <view wx:if="{{searchResults.length == 0}}">
+      <text>未找到相关结果</text>
+    </view>
+  </view>
+</view>
