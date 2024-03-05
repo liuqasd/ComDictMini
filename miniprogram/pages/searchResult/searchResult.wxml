@@ -8,15 +8,30 @@
     </form>
   </view>
   
-  <view class="results-section">
+  <view class="weui-cells">
     <block wx:for="{{searchResults}}" wx:key="unique">
-      <view class="result-item">
-        <text>{{item.word}}</text>
-        <text>{{item.translation}}</text>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="result-item">
+            <text class="word">{{item.name}}</text>
+            <view class="phonetic">
+              <text>/{{item.ukphone}}/</text>
+              <text>/{{item.usphone}}/</text>
+            </view>
+            
+            <text>{{item.trans}}</text>
+          </view>
+        </view>
       </view>
     </block>
-    <view wx:if="{{searchResults.length == 0}}">
-      <text>未找到相关结果</text>
+  </view>
+
+  <view wx:if="{{searchResults.length == 0}}" class="weui-msg">
+    <view class="weui-msg__icon-area">
+      <icon class="weui-icon-warn weui-icon_msg"></icon>
+    </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">未找到相关结果</view>
     </view>
   </view>
 </view>

@@ -1,26 +1,14 @@
-.container {
-  padding: 20px;
+.word {
+  font-size: 20px; /* 放大单词字体大小 */
+  display: block; /* 将单词显示为块元素，单独一行 */
 }
 
-.search-section form {
-  display: flex;
-  margin-bottom: 20px;
+.phonetic {
+  display: block; /* 将音标显示为块元素，单独一行 */
+  font-size: 14px; /* 音标字体大小 */
+  margin-top: 5px; /* 与单词之间的上边距 */
 }
 
-.search-input {
-  flex-grow: 1;
-  border: 1px solid #ccc;
-  padding: 10px;
-  }
-  
-  .results-section {
-  display: flex;
-  flex-direction: column;
-  }
-  
-  .result-item {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  }
+.result-item {
+  margin-bottom: 10px; /* 单词条目之间的下边距 */
+}
