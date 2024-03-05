@@ -6,8 +6,8 @@
         <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="再次输入搜索词汇" required focus="{{inputFocus}}" bindinput="onSearchInput" bindconfirm="onSearchSubmit"/>
       </div>
     </form>
-    
   </view>
+  
   <view class="results-section">
     <block wx:for="{{searchResults}}" wx:key="unique">
       <view class="result-item">
