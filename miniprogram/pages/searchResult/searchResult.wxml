@@ -15,16 +15,16 @@
           <view class="title">{{item.name}}</view>
             <view class="phonetic">
               <view class="part-of-speech">
-                <text>/{{item.ukphone}}/</text>
-              </view>
-              <view class="icon">
-                <image src="{{'/images/speaker.svg'}}" mode="widthFix"></image>
-              </view>
-              <view class="part-of-speech">
                 <text>/{{item.usphone}}/</text>
               </view>
               <view class="icon">
-                <image src="{{'/images/speaker.svg'}}" mode="widthFix"></image>
+                <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap0"></image>
+              </view>
+              <view class="part-of-speech">
+                <text>/{{item.ukphone}}/</text>
+              </view>
+              <view class="icon" >
+                <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap1"></image>
               </view>
 
             </view>

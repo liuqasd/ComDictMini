@@ -29,18 +29,6 @@ Page({
         },
         success: function(res) {
           console.log('搜索结果:', res.result);
-          // 检查结果是否包含有效数据
-          // if (res.result && res.result.data && Array.isArray(res.result.data)) {
-          //   that.setData({
-          //     searchResults: res.result.data.map((item) => {
-          //       return {
-          //         name: item.name,
-          //         trans: item.trans,
-          //         usphone: item.usphone,
-          //         ukphone: item.ukphone,
-          //       }
-          //     })
-          //   });
           // 处理搜索结果
           if (res.result.code === 200) {
             let formattedResults = res.result.data.map((item) => {
@@ -66,5 +54,42 @@ Page({
         }
       })
     }
+  },
+
+  onIconTap0: function(e) {
+    const word = e.currentTarget.dataset.word;
+    console.log("发音单词：", word);
+    // 构建发音的完整 URL
+    let audioUrl = `http://dict.youdao.com/dictvoice?type=0&audio=${word}`;
+    // 创建音频上下文实例
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.src = audioUrl;
+  
+    // 播放音频
+    innerAudioContext.play();
+  
+    // 监听播放完成事件
+    innerAudioContext.onEnded(() => {
+      console.log('发音播放完成');
+    });
+  },
+
+  onIconTap1: function(e) {
+    const word = e.currentTarget.dataset.word;
+    console.log("发音单词：", word);
+    // 构建发音的完整 URL
+    let audioUrl = `http://dict.youdao.com/dictvoice?type=1&audio=${word}`;
+    // 创建音频上下文实例
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.src = audioUrl;
+  
+    // 播放音频
+    innerAudioContext.play();
+  
+    // 监听播放完成事件
+    innerAudioContext.onEnded(() => {
+      console.log('发音播放完成');
+    });
   }
+  
 })
