@@ -90,6 +90,19 @@ Page({
     innerAudioContext.onEnded(() => {
       console.log('发音播放完成');
     });
-  }
+  },
   
+  onCollectionTap(e) {
+    const item = e.currentTarget.dataset.item;
+  
+    // 添加到收藏列表
+    wx.setStorageSync('collection', [...wx.getStorageSync('collection') || [], item]);
+  
+    // 显示收藏成功提示
+    wx.showToast({
+      title: '收藏成功',
+      icon: 'success',
+      duration: 2000
+    });
+  }
 })

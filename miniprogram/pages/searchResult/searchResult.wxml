@@ -13,21 +13,23 @@
       <block wx:for="{{searchResults}}" wx:key="unique">
         <view class="header">
           <view class="title">{{item.name}}</view>
-            <view class="phonetic">
-              <view class="part-of-speech">
+          <view class="icon" bindtap="onCollectionTap">
+            <image src="{{'/images/collection.svg'}}" mode="widthFix" />
+          </view>
+          <view class="phonetic">
+            <view class="part-of-speech">
                 <text>/{{item.usphone}}/</text>
-              </view>
-              <view class="icon">
-                <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap0"></image>
-              </view>
-              <view class="part-of-speech">
-                <text>/{{item.ukphone}}/</text>
-              </view>
-              <view class="icon" >
-                <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap1"></image>
-              </view>
-
             </view>
+            <view class="icon">
+                <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap0"></image>
+            </view>
+            <view class="part-of-speech">
+                <text>/{{item.ukphone}}/</text>
+            </view>
+            <view class="icon" >
+                <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap1"></image>
+            </view>
+          </view>
         </view>
         <view class="body">
           <view class="definition">{{item.trans}}</view>
