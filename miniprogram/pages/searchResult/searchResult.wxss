@@ -37,11 +37,13 @@
 /*音标*/
 .phonetic {
   display: flex;
+  margin-right: 10px;
+  flex-wrap: wrap;
 }
 
 .icon {
-  width: 20px;
+  width: 14px;
   height: 14px;
-  margin-right: 120px;
+  margin-right: 80px;
   transform: scale(0.07);
 }
