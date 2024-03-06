@@ -1,4 +1,4 @@
-<view class="container">
+<view>
   <view class="weui-search-bar" id="searchBar">
     <form bindsubmit="onSearchSubmit"> <!-- 绑定表单的提交事件 -->
       <div class="weui-search-bar__box" bind:tap="onSearchIconClick">
@@ -7,23 +7,33 @@
       </div>
     </form>
   </view>
-  
-  <view class="weui-cells">
-    <block wx:for="{{searchResults}}" wx:key="unique">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">
-          <view class="result-item">
-            <text class="word">{{item.name}}</text>
+
+  <view class="container">
+    <view class="card">
+      <block wx:for="{{searchResults}}" wx:key="unique">
+        <view class="header">
+          <view class="title">{{item.name}}</view>
             <view class="phonetic">
-              <text>/{{item.ukphone}}/</text>
-              <text>/{{item.usphone}}/</text>
+              <view class="part-of-speech">
+                <text>/{{item.ukphone}}/</text>
+              </view>
+              <view class="icon">
+                <image src="{{'/images/speaker.svg'}}" mode="widthFix"></image>
+              </view>
+              <view class="part-of-speech">
+                <text>/{{item.usphone}}/</text>
+              </view>
+              <view class="icon">
+                <image src="{{'/images/speaker.svg'}}" mode="widthFix"></image>
+              </view>
+
             </view>
-            
-            <text>{{item.trans}}</text>
-          </view>
         </view>
-      </view>
-    </block>
+        <view class="body">
+          <view class="definition">{{item.trans}}</view>
+        </view>
+      </block>
+    </view>
   </view>
 
   <view wx:if="{{searchResults.length == 0}}" class="weui-msg">
