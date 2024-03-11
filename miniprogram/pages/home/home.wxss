@@ -1,4 +1,4 @@
-.header text {
+/* .header text {
   font-size: 18px;
   color: #333;
   margin-bottom: 20px;
@@ -10,34 +10,27 @@
   background-color: #f8f8f8;
   text-align: center;
 }
-/* 用户信息样式 */
-.user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  background-color: #FAFBFC;
-}
 
 .user-name {
   font-size: 18px;
   color: #000;
 }
 
-/* 列表项样式 */
+/* 列表项样式 
 .weui-cells {
   margin-top: 15px;
 }
-/* 隐藏登录按钮 */
+/* 隐藏登录按钮 
 .weui-btn_primary {
   display: none;
 }
 
-/* 增加功能列表宽度 */
+/* 增加功能列表宽度 
 .custom-weui-cells {
-  width: 100%; /* 设置功能列表宽度为100% */
+  width: 100%; /* 设置功能列表宽度为100% 
 }
-/* 用户信息容器样式 */
+
+/* 用户信息容器样式 
 .user-info-container {
   display: flex;
   justify-content: space-between;
@@ -45,36 +38,32 @@
   padding: 10px;
   width: 100%;
   background-color: #fff;
-  border-bottom: 1px solid #eee; /* 添加底部边框线 */
+  border-bottom: 1px solid #eee; /* 添加底部边框线 
 }
 
-/* 用户名字容器样式 */
+/* 用户名字容器样式 
 .user-name-container {
   margin-left: 10px;
   flex-grow: 1;
 }
 
-/* 用户名字样式 */
-.user-name {
-  font-size: 16px;
-}
-
-/* 用户头像容器样式 */
+/* 用户头像容器样式 
 .user-avatar-container {
-  border-radius: 50%;
+  border-radius: 20%;
   overflow: hidden;
-  background-color: #f0f0f0; /* 添加背景色 */
-  border: 2px solid #fff; /* 添加白色边框 */
+  background-color: #f0f0f0; /* 添加背景色 
+  border: 2px solid #fff; /* 添加白色边框 
+  margin-left: 10px;
 }
 
-/* 用户头像样式 */
+/* 用户头像样式 
 .user-avatar {
   width: 10px;
   height: 10px;
-  object-fit: cover; /* 图片填充方式，保持宽高比并裁剪 */
+  object-fit: cover; /* 图片填充方式，保持宽高比并裁剪 
 }
 
-/* 用户信息文本容器样式 */
+/* 用户信息文本容器样式 
 .user-info-text {
   flex-grow: 1;
   margin-left: 10px;
@@ -83,14 +72,77 @@
   justify-content: center;
 }
 
-/* 用户名字样式 */
+/* 用户名字样式 
 .user-name {
   font-size: 16px;
-  font-weight: bold; /* 加粗字体 */
-  color: #333; /* 修改字体颜色 */
+  font-weight: bold; /* 加粗字体 
+  color: #333; /* 修改字体颜色 
 }
 
-/* 鼠标悬停效果 */
+/* 鼠标悬停效果 
 .user-info-container:hover {
-  background-color: #f5f5f5; /* 悬停时背景色变化 */
+  background-color: #f5f5f5; /* 悬停时背景色变化 
+} */
+
+
+.weui-panel {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.weui-panel__hd {
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #eee;
+}
+
+.weui-media-box {
+  margin-bottom: 10px;
+}
+
+.weui-media-box__thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.weui-media-box__title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.weui-media-box__desc {
+  font-size: 14px;
+  color: #999;
+}
+
+.weui-cells {
+  margin-top: 15px;
+}
+
+.weui-cell {
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.weui-cell__bd {
+  flex-grow: 1;
+}
+
+.weui-cell__ft {
+  flex-shrink: 0;
+}
+
+.weui-btn_primary {
+  display: none;
+}
+
+.weui-btn_primary:hover {
+  background-color: #07c160;
+  color: #fff;
 }

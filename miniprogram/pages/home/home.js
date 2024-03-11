@@ -1,28 +1,55 @@
 Page({
-  onGetUserInfo: function(e) {
-    // 这里处理登录逻辑
-    console.log(e.detail.userInfo);
-    logout: () => {
+  data: {
+    user: {
+      avatar: "https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132",
+      nickname: ''
+    }
+  },
+  onGetUserInfo: function (e) {
+    if (e.detail.userInfo) {
+      const userInfo = e.detail.userInfo;
+      this.setData({
+        'user.avatar': userInfo.avatarUrl,
+        'user.nickname': userInfo.nickName
+      });
+      console.log('用户信息', this.data.user)
+      // 手动触发数据绑定
+      this.setData({
+        user: this.data.user
+      });
+      // 将用户信息传递给云函数进行登录操作
       wx.cloud.callFunction({
-        name: 'logout',
-        data: {},
+        name: 'login',
+        data: {
+          userInfo: userInfo
+        },
         success: res => {
-          // 在云函数成功执行后，可以执行清除用户信息、跳转到登录页面等操作
-          // 你可以根据云函数的返回结果来确定退出登录是否成功
-          // 例如，如果云函数返回成功标志，可以执行以下操作：
-          // 清除本地缓存的用户信息
-          wx.removeStorageSync('userInfo');
-          // 跳转到登录页面
-          wx.navigateTo({
-            url: '/pages/index/index',
-          });
+          console.log('登录成功', res.result)
+          // 登录成功后的处理逻辑
+          wx.showToast({
+            title: '登录成功',
+            icon: 'success',
+            duration: 2000
+          })
+          // 可以跳转到其他页面
         },
         fail: err => {
-          // 云函数调用失败，处理错误情况
-          console.error('退出登录失败：', err);
+          console.error('登录失败', err)
+          // 处理登录失败情况，例如显示错误信息给用户
+          wx.showToast({
+            title: '登录失败，请重试',
+            icon: 'none',
+            duration: 2000
+          })
         }
-      });
+      })
+    } else {
+      // 用户拒绝授权的处理逻辑
+      wx.showToast({
+        title: '请授权后登录',
+        icon: 'none',
+        duration: 2000
+      })
     }
-    
   }
 });

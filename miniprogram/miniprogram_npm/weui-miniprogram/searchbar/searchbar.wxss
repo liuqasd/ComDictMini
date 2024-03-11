@@ -1,5 +1,7 @@
-.weui-search-bar__label text {
+.weui-search-bar__label {
   display: inline-block;
   font-size: 14px;
   vertical-align: middle;
 }
+
+

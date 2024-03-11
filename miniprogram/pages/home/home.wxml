@@ -1,29 +1,30 @@
-<view class="container">
- <!-- 头部用户信息区域 -->
-<view class="weui-panel user-info-container">
-  <!-- 用户头像容器 -->
-  <view class="user-avatar-container">
-    <open-data type="userAvatarUrl" class="user-avatar"></open-data>
+<!-- <view class="container">
+  <!-- 头部用户信息区域 
+  <view class="weui-panel user-info-container">
+    <!-- 用户头像容器 
+    <view class="user-avatar-container">
+      <open-data type="userAvatarUrl" class="user-avatar"></open-data>
+    </view>
+    <!-- 用户信息文本容器 
+    <view class="user-info-text">
+      <!-- 用户名字 
+      <open-data type="userNickName" class="user-name"></open-data>
+    </view>
   </view>
-  <!-- 用户信息文本容器 -->
-  <view class="user-info-text">
-    <!-- 用户名字 -->
-    <open-data type="userNickName" class="user-name"></open-data>
-  </view>
-</view>
 
   <button class="weui-btn weui-btn_primary" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
-  <!-- 功能列表区域 -->
+
+  <!-- 功能列表区域 
   <view class="weui-cells custom-weui-cells">
     <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
       <view class="weui-cell__bd">
-        <text>我的收藏</text>
+        <text>收藏</text>
       </view>
       <view class="weui-cell__ft"></view>
     </navigator>
     <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
       <view class="weui-cell__bd">
-        <text>我的反馈</text>
+        <text>反馈</text>
       </view>
       <view class="weui-cell__ft"></view>
     </navigator>
@@ -33,5 +34,54 @@
       </view>
       <view class="weui-cell__ft"></view>
     </navigator>
+  </view>
+
+  <view class="weui-cell_access">
+    <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <text>退出登录</text>
+      </view>
+    </navigator>
+  </view>
+</view> -->
+
+<view class="weui-panel user-info-container">
+  <view class="weui-panel__hd">
+    <view class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <image class="weui-media-box__thumb" src="{{user.avatar}}"/>
+      </div>
+
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{{user.nickname}}</h4>
+        
+      </div>
+    </view>
+  </view>
+  
+  <view class="weui-panel__bd">
+    <view class="weui-cells">
+      <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <text>收藏</text>
+        </view>
+        <view class="weui-cell__ft"></view>
+      </navigator>
+      <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <text>反馈</text>
+        </view>
+        <view class="weui-cell__ft"></view>
+      </navigator>
+      <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <text>关于</text>
+        </view>
+        <view class="weui-cell__ft"></view>
+      </navigator>
+    </view>
+  </view>
+  <view class="weui-panel__ft">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
   </view>
 </view>
