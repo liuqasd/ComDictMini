@@ -1,42 +1,43 @@
 <view class="weui-panel user-info-container">
-  <view class="weui-panel__hd">
-    <view class="weui-media-box weui-media-box_appmsg">
-      <div class="weui-media-box__hd">
+  <view class="weui-media-box weui-media-box_appmsg">
+    <div class="weui-media-box__hd">
         <image class="weui-media-box__thumb" src="{{user.avatar}}"/>
-      </div>
-      <div class="weui-media-box__bd">
+    </div>
+    <div class="weui-media-box__bd">
         <h4 class="weui-media-box__title">{{user.nickname}}</h4>
-      </div>
-    </view>
+    </div>
   </view>
-  
-  <view class="weui-panel__bd">
-    <view class="weui-cells">
-      <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
-        <view class="weui-cell__bd">
-          <text>收藏</text>
-        </view>
-        <view class="weui-cell__ft"></view>
-      </navigator>
-      <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
-        <view class="weui-cell__bd">
-          <text>反馈</text>
-        </view>
-        <view class="weui-cell__ft"></view>
-      </navigator>
-      <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
-        <view class="weui-cell__bd">
-          <text>关于</text>
-        </view>
-        <view class="weui-cell__ft"></view>
-      </navigator>
-    </view>
+</view>
+
+<view class="weui-panel__bd">
+  <view class="weui-cells">
+    <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <text>收藏</text>
+      </view>
+      <view class="weui-cell__ft"></view>
+    </navigator>
+    <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <text>反馈</text>
+      </view>
+      <view class="weui-cell__ft"></view>
+    </navigator>
+    <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <text>关于</text>
+      </view>
+      <view class="weui-cell__ft"></view>
+    </navigator>
   </view>
-  
-  <view class="weui-panel__ft" wx:if="{{ !user.nickname }}">
+</view>
+
+<view class="weui-panel user-info-container">
+  <view class="weui-panel__ft" wx:if="{{ ! isLoggedIn }}">
     <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">请登录</button>
   </view>
-  <view class="weui-panel__ft" wx:if="{{ user.nickname }}">
-    <button open-type="getuserinfo" bindgetuserinfo="onGetUserInfo">退出登录</button>
+    
+  <view class="weui-panel__ft" wx:if="{{ isLoggedIn }}">
+    <button bindtap="logout">退出登录</button>
   </view>
 </view>

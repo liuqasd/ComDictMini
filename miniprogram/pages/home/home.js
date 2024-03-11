@@ -3,14 +3,16 @@ Page({
     user: {
       avatar: "https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132",
       nickname: '微信用户'
-    }
+    },
+    isLoggedIn: false // 新增变量用于控制登录按钮显示与隐藏
   },
   onGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       const userInfo = e.detail.userInfo;
       this.setData({
         'user.avatar': userInfo.avatarUrl,
-        'user.nickname': userInfo.nickName
+        'user.nickname': userInfo.nickName,
+        isLoggedIn: true // 用户已登录
       });
       console.log('用户信息', this.data.user)
       // 手动触发数据绑定
@@ -51,5 +53,19 @@ Page({
         duration: 2000
       })
     }
+  },
+  logout: function() {
+    // 清空用户信息
+    this.setData({
+      'user.avatar': "https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132",
+      'user.nickname': '微信用户',
+      isLoggedIn: true // 用户已登录，修改 isLoggedIn 的值为 true
+    });
+    // 手动触发数据绑定
+    this.setData({
+      user: this.data.user
+    });
+    // 这里可以调用云函数或后台接口来清除登录状态
+    console.log('退出登录');
   }
 });
