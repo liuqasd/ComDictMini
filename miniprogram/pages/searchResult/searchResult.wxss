@@ -55,8 +55,8 @@
 }
 
 .icon_collection {
-  width: 14px;
-  height: 14px;
+  width: 22px;
+  height: 22px;
   margin-left: 10px;
   transform: scale(0.07);
 }

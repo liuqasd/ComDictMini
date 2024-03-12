@@ -1,7 +1,8 @@
 Page({
   data: {
     searchResults: [],
-    searchText: "" // 存储搜索关键词
+    searchText: "",   // 存储搜索关键词
+    collectedWords: [], // 已收藏的词汇列表
   },
 
   onLoad: function(options) {
@@ -13,10 +14,39 @@ Page({
     this.setData({
       searchResults: []
     });
+    // 页面加载时获取已收藏的词汇列表
+    this.getCollectedWords();
     // 调用 search() 函数来处理搜索结果
     console.log('调用 search() 函数来处理搜索结果', searchText);
     this.search(searchText);
   },
+
+  onSearchIconClick: function() {
+    console.log("点击搜索");
+    this.setData({
+      inputFocus: true
+    });
+    console.log("Input focus set to true");
+  },
+
+  onSearchInput: function(e) {
+    console.log('输入词汇：', e.detail.value);
+    const query = e.detail.value;
+    this.setData({
+      searchText: query // 存储搜索关键词
+    });
+  },
+
+  onSearchSubmit: function(e) {
+    // 搜索提交时的处理函数
+    console.log('搜索词汇：', e.detail.value);
+    const searchText = this.data.searchText;
+    console.log('搜索词汇：', searchText);
+    wx.navigateTo({
+      url: '/pages/searchResult/searchResult?searchText=' + searchText
+    });
+  },
+
 
   search: function(query) {
     let that = this; // 保存当前页面的引用
@@ -32,11 +62,15 @@ Page({
           // 处理搜索结果
           if (res.result.code === 200) {
             let formattedResults = res.result.data.map((item) => {
+              // 判断当前项是否已被收藏
+              const isCollected = that.data.collectedWords.some(word => word.name === item.name);
+              console.log('是否被收藏:', isCollected);
               return {
                 name: item.name,
                 trans: item.trans,
                 usphone: item.usphone,
-                ukphone: item.ukphone
+                ukphone: item.ukphone,
+                collected: isCollected // 添加字段表示是否已被收藏
               }
             });
 
@@ -109,6 +143,14 @@ Page({
       return; // 结束函数执行
     }
 
+    // 检查当前项是否已经被收藏
+    const isCollected = this.data.collectedWords.some(word => word.name === item.name);
+
+    if (isCollected) {
+      // 如果已经被收藏，则不执行收藏操作，直接返回
+      return;
+    }
+
     // 调用云函数添加词汇到收藏集合，并传递用户的 OpenID
     wx.cloud.callFunction({
       name: 'addcollection',
@@ -121,6 +163,12 @@ Page({
       },
       success: res => {
         console.log('收藏成功', res.result);
+        // 更新当前项的收藏状态为已收藏
+        item.collected = true;
+        // 更新页面数据，触发重新渲染
+        this.setData({
+          searchResults: this.data.searchResults
+        });
         // 显示收藏成功提示
         wx.showToast({
           title: '收藏成功',
@@ -136,6 +184,29 @@ Page({
           icon: 'none',
           duration: 2000
         });
+      }
+    });
+  },
+
+  // 调用云函数获取已收藏的词汇列表
+  getCollectedWords: function() {
+    const openid = wx.getStorageSync('openid');
+    if (!openid) {
+      console.log('未获取到用户 ID!');
+      return;
+    } else {
+      console.log('用户 ID:', openid);
+    }
+
+    wx.cloud.callFunction({
+      name: 'getcollectedwords',
+      success: res => {
+        console.log('已收藏的词汇列表：', res.result.data);
+        this.setData({ collectedWords: res.result.data });
+        console.log('存储的已收藏的词汇列表collectedWords：', this.data.collectedWords);
+      },
+      fail: err => {
+        console.error('获取已收藏的词汇列表失败：', err);
       }
     });
   }
