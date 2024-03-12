@@ -15,3 +15,66 @@
 .unfavorite-button {
   color: #ff4444;
 }
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 680rpx;
+}
+
+.header {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header_speech {
+  display: flex;
+  padding: 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.part-of-speech {
+  font-size: 18px;
+  color: #999;
+}
+
+.body {
+  padding: 20px;
+}
+
+.definition {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/*音标*/
+.phonetic {
+  display: flex;
+  margin-right: 10px;
+  flex-wrap: wrap;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 52px;
+  transform: scale(0.07);
+}
+
+.icon_collection {
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+  transform: scale(0.07);
+}

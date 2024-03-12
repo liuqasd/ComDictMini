@@ -47,7 +47,6 @@ Page({
     });
   },
 
-
   search: function(query) {
     let that = this; // 保存当前页面的引用
     if (query) {
