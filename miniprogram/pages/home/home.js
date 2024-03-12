@@ -27,6 +27,7 @@ Page({
         },
         success: res => {
           console.log('登录成功', res.result)
+          wx.setStorageSync('openid', res.result.openid);
           // 登录成功后的处理逻辑
           wx.showToast({
             title: '登录成功',
@@ -59,7 +60,7 @@ Page({
     this.setData({
       'user.avatar': "https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132",
       'user.nickname': '微信用户',
-      isLoggedIn: true // 用户已登录，修改 isLoggedIn 的值为 true
+      isLoggedIn: false // 用户已登录，修改 isLoggedIn 的值为 true
     });
     // 手动触发数据绑定
     this.setData({

@@ -13,8 +13,8 @@
       <block wx:for="{{searchResults}}" wx:key="unique">
         <view class="header">
           <view class="title">{{item.name}}</view>
-          <view class="icon_collection" bindtap="onCollectionTap">
-            <image src="{{'/images/collection.svg'}}" mode="widthFix" />
+          <view class="icon_collection" bindtap="onCollectionTap" data-item="{{item}}">
+            <image src="/images/collection.svg" mode="widthFix" />
           </view>
         </view>
         <view class="header_speech">

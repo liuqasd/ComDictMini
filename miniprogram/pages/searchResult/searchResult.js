@@ -94,15 +94,49 @@ Page({
   
   onCollectionTap(e) {
     const item = e.currentTarget.dataset.item;
-  
-    // 添加到收藏列表
-    wx.setStorageSync('collection', [...wx.getStorageSync('collection') || [], item]);
-  
-    // 显示收藏成功提示
-    wx.showToast({
-      title: '收藏成功',
-      icon: 'success',
-      duration: 2000
+    console.log("收藏的单词：",item);
+    // 获取用户的 OpenID
+    const openid = wx.getStorageSync('openid');
+    console.log("收藏的用户：",openid);
+
+    if (!openid) {
+      // 用户未登录，显示提示消息
+      wx.showToast({
+        title: '收藏失败，请登录',
+        icon: 'none',
+        duration: 2000
+      });
+      return; // 结束函数执行
+    }
+
+    // 调用云函数添加词汇到收藏集合，并传递用户的 OpenID
+    wx.cloud.callFunction({
+      name: 'addcollection',
+      data: {
+        name: item.name,  // 传递收藏的词条名称
+        trans: item.trans,  // 传递收藏的词条翻译
+        usphone: item.usphone,  // 传递收藏的词条美式发音
+        ukphone: item.ukphone,  // 传递收藏的词条英式发音
+        openid: openid  // 传递用户的 OpenID
+      },
+      success: res => {
+        console.log('收藏成功', res.result);
+        // 显示收藏成功提示
+        wx.showToast({
+          title: '收藏成功',
+          icon: 'success',
+          duration: 2000
+        });
+      },
+      fail: err => {
+        console.error('收藏失败', err);
+        // 显示收藏失败提示
+        wx.showToast({
+          title: '收藏失败，请登录',
+          icon: 'none',
+          duration: 2000
+        });
+      }
     });
   }
 })
