@@ -38,5 +38,41 @@ Page({
     const updatedFavorites = this.data.favorites.filter(item => item.id !== id);
     this.setData({ favorites: updatedFavorites });
 
-  }
+  },
+
+  onIconTap0: function(e) {
+    const word = e.currentTarget.dataset.word;
+    console.log("发音单词：", word);
+    // 构建发音的完整 URL
+    let audioUrl = `http://dict.youdao.com/dictvoice?type=0&audio=${word}`;
+    // 创建音频上下文实例
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.src = audioUrl;
+  
+    // 播放音频
+    innerAudioContext.play();
+  
+    // 监听播放完成事件
+    innerAudioContext.onEnded(() => {
+      console.log('发音播放完成');
+    });
+  },
+
+  onIconTap1: function(e) {
+    const word = e.currentTarget.dataset.word;
+    console.log("发音单词：", word);
+    // 构建发音的完整 URL
+    let audioUrl = `http://dict.youdao.com/dictvoice?type=1&audio=${word}`;
+    // 创建音频上下文实例
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.src = audioUrl;
+  
+    // 播放音频
+    innerAudioContext.play();
+  
+    // 监听播放完成事件
+    innerAudioContext.onEnded(() => {
+      console.log('发音播放完成');
+    });
+  },
 })
