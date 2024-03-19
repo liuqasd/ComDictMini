@@ -145,8 +145,50 @@ Page({
     // 检查当前项是否已经被收藏
     const isCollected = this.data.collectedWords.some(word => word.name === item.name);
 
+    // 如果已经被收藏，则取消收藏
     if (isCollected) {
-      // 如果已经被收藏，则不执行收藏操作，直接返回
+      console.log('取消收藏');
+      // 调用云函数从收藏集合中删除词汇
+      wx.cloud.callFunction({
+        name: 'removecollection',
+        data: {
+          name: item.name, // 传递要取消收藏的词条名称
+          openid: openid // 传递用户的 OpenID
+        },
+        success: res => {
+          console.log('取消收藏成功', res.result);
+          // 更新当前项的收藏状态为未收藏
+          item.collected = false;
+
+          // 使用 map 方法遍历 searchResults 数组
+          const searchResults = this.data.searchResults.map(item => {
+            if (item.name === e.currentTarget.dataset.item.name) {
+              item.collected = !item.collected;
+            }
+            return item;
+          });
+          // 更新页面数据，触发重新渲染
+          this.setData({
+            searchResults
+          });
+
+          // 显示取消收藏成功提示
+          wx.showToast({
+            title: '取消收藏成功',
+            icon: 'success',
+            duration: 2000
+          });
+        },
+        fail: err => {
+          console.error('取消收藏失败', err);
+          // 显示取消收藏失败提示
+          wx.showToast({
+            title: '取消收藏失败，请登录',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      });
       return;
     }
 
@@ -164,10 +206,19 @@ Page({
         console.log('收藏成功', res.result);
         // 更新当前项的收藏状态为已收藏
         item.collected = true;
+
+        // 使用 map 方法遍历 searchResults 数组
+        const searchResults = this.data.searchResults.map(item => {
+          if (item.name === e.currentTarget.dataset.item.name) {
+            item.collected = !item.collected;
+          }
+          return item;
+        });
         // 更新页面数据，触发重新渲染
         this.setData({
-          searchResults: this.data.searchResults
+          searchResults
         });
+       
         // 显示收藏成功提示
         wx.showToast({
           title: '收藏成功',
@@ -208,5 +259,14 @@ Page({
         console.error('获取已收藏的词汇列表失败：', err);
       }
     });
-  }
+  },
+
+  // 下拉刷新触发的事件
+  onPullDownRefresh() {
+    this.getCollectedWords(); // 重新拉取收藏数据
+    this.setData({
+      searchResults: this.data.searchResults
+    });
+    wx.stopPullDownRefresh(); // 停止下拉刷新动画
+  },
 })

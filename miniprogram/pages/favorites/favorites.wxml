@@ -3,7 +3,7 @@
     <view class="card">
       <view class="header">
           <view class="title">{{item.name}}</view>
-          <view class="icon_collection" bindtap="onCollectionTap" data-item="{{item}}">
+          <view class="icon_collection" bindtap="onUnfavorite" data-item="{{item}}">
             <image src='/images/collected.png' mode="widthFix" />
           </view>
       </view>
@@ -33,6 +33,3 @@
     <text>您还没有收藏任何术语。</text>
   </view>
 </view>
-
-
-

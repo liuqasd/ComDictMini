@@ -11,11 +11,6 @@
 
   <!-- 功能列表区域 -->
   <view class="weui-cells custom-weui-cells">
-    <navigator url="/pages/popular/popular" class="weui-cell weui-cell_access">
-      <view class="weui-cell__bd">
-        <text>热门搜索</text>
-      </view>
-    </navigator>
     <navigator url="/pages/searchResult/searchResult" class="weui-cell weui-cell_access">
       <view class="weui-cell__bd">
         <text>搜索记录</text>

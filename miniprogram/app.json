@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/home/home",
     "pages/searchResult/searchResult",
-    "pages/termDetail/termDetail",
     "pages/favorites/favorites"
   ],
   "window": {
@@ -11,7 +10,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "计算机专业术语词典",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [{

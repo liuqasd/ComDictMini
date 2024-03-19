@@ -12,16 +12,14 @@ Page({
     if (!openid) {
       console.log('未获取到用户 ID!');
       return;
-    } else {
-      console.log('用户 ID:', openid);
     }
 
     wx.cloud.callFunction({
       name: 'getcollectedwords',
       success: res => {
-        console.log('已收藏的词汇列表：', res.result.data);
+        // console.log('已收藏的词汇列表：', res.result.data);
         this.setData({ collectedWords: res.result.data });
-        console.log('存储的已收藏的词汇列表collectedWords：', this.data.collectedWords);
+        // console.log('存储的已收藏的词汇列表collectedWords：', this.data.collectedWords);
       },
       fail: err => {
         console.error('获取已收藏的词汇列表失败：', err);
@@ -31,14 +29,52 @@ Page({
 
   onUnfavorite: function(e) {
     const id = e.currentTarget.dataset.id;
-    console.log('取消收藏术语ID：', id);
-    // 调用云函数或其他方法执行取消收藏的逻辑
-
-    // 示例：假设取消收藏后更新收藏列表
-    const updatedFavorites = this.data.favorites.filter(item => item.id !== id);
-    this.setData({ favorites: updatedFavorites });
-
-  },
+    const item = this.data.collectedWords.find(item => item.id === id);
+  
+    // 判断用户是否登录
+    const openid = wx.getStorageSync('openid');
+    if (!openid) {
+      wx.showToast({
+        title: '收藏失败，请登录',
+        icon: 'none',
+        duration: 2000,
+      });
+      return;
+    }
+  
+    // 调用云函数从收藏集合中删除词汇
+    wx.cloud.callFunction({
+      name: 'removecollection',
+      data: {
+        name: item.name, // 传递要取消收藏的词条名称
+        openid, // 传递用户的 OpenID
+      },
+      success: res => {
+        console.log('取消收藏成功', res.result);
+  
+        // 更新页面数据
+        const collectedWords = this.data.collectedWords.filter(word => word.id !== id);
+        this.setData({ collectedWords });
+  
+        // 显示取消收藏成功提示
+        wx.showToast({
+          title: '取消收藏成功',
+          icon: 'success',
+          duration: 2000,
+        });
+      },
+      fail: err => {
+        console.error('取消收藏失败', err);
+  
+        // 显示取消收藏失败提示
+        wx.showToast({
+          title: '取消收藏失败，请登录',
+          icon: 'none',
+          duration: 2000,
+        });
+      },
+    });
+  },  
 
   onIconTap0: function(e) {
     const word = e.currentTarget.dataset.word;
@@ -74,5 +110,11 @@ Page({
     innerAudioContext.onEnded(() => {
       console.log('发音播放完成');
     });
+  },
+
+  // 下拉刷新触发的事件
+  onPullDownRefresh() {
+    this.getCollectedWords(); // 重新拉取收藏数据
+    wx.stopPullDownRefresh(); // 停止下拉刷新动画
   },
 })
