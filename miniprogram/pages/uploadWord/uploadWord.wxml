@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="card">
+    <form bindsubmit="onSubmit">
+      <view class="header">
+        <view class="title">上传词汇</view>
+      </view>
+      <view class="body">
+        <view class="item">
+          <label for="name">词汇名称</label>
+          <input type="text" id="name" name="name" placeholder="请输入词汇名称" required />
+        </view>
+        <view class="item">
+          <label for="trans">释义</label>
+          <textarea id="trans" name="trans" placeholder="请输入词汇释义" required></textarea>
+        </view>
+        <view class="item">
+          <label for="usphone">美式发音</label>
+          <input type="text" id="usphone" name="usphone" placeholder="请输入美式发音" />
+        </view>
+        <view class="item">
+          <label for="ukphone">英式发音</label>
+          <input type="text" id="ukphone" name="ukphone" placeholder="请输入英式发音" />
+        </view>
+        <view class="item">
+          <label for="pos">词性</label>
+          <input type="text" id="pos" name="pos" placeholder="请输入词性" />
+        </view>
+        <view class="item">
+          <label for="example">例句</label>
+          <textarea id="example" name="example" placeholder="请输入例句"></textarea>
+        </view>
+      </view>
+      <view class="footer">
+        <button type="submit" class="weui-btn weui-btn_primary">上传</button>
+      </view>
+    </form>
+  </view>
+</view>

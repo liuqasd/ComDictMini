@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/home/home",
     "pages/searchResult/searchResult",
-    "pages/favorites/favorites"
+    "pages/favorites/favorites",
+    "pages/uploadWord/uploadWord"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -14,17 +15,20 @@
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "/images/index.png",
-      "selectedIconPath": "/images/index_activate.png"
-    }, {
-      "pagePath": "pages/home/home",
-      "text": "我的",
-      "iconPath": "/images/home.png",
-      "selectedIconPath": "/images/home_activate.png"
-    }],
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index_activate.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_activate.png"
+      }
+    ],
     "color": "#7A7E83",
     "selectedColor": "#07C160",
     "backgroundColor": "#ffffff",
