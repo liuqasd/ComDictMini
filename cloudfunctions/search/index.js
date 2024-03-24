@@ -47,6 +47,20 @@ exports.main = async (event) => {
     }
 
     // 在第三个数据库中查询
+    result = await db.collection('AIMachineLearning').where({
+      name: wordName
+    }).get();
+
+    // 如果中找到匹配的单词，则返回结果
+    if (result.data.length > 0) {
+      return {
+        code: 200,
+        data: result.data,
+        message: '查询成功'
+      };
+    }
+    
+    // 在第四个数据库中查询
     result = await db.collection('newwordsfromusers').where({
       name: wordName
     }).get();
