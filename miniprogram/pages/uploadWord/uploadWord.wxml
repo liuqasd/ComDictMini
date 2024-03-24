@@ -1,37 +1,37 @@
 <view class="container">
   <view class="card">
-    <form bindsubmit="onSubmit">
+    <form bindsubmit="onSubmit" bindreset="resetForm">
       <view class="header">
         <view class="title">上传词汇</view>
       </view>
       <view class="body">
         <view class="item">
-          <label for="name">词汇名称</label>
-          <input type="text" id="name" name="name" placeholder="请输入词汇名称" required />
+          <label for="name">英文</label>
+          <input type="text" id="name" name="name" placeholder="请输入词汇名称（必填）" value="{{name}}" bindinput="inputChange" required />
         </view>
         <view class="item">
           <label for="trans">释义</label>
-          <textarea id="trans" name="trans" placeholder="请输入词汇释义" required></textarea>
+          <textarea id="trans" name="trans" placeholder="请输入词汇释义（必填）" value="{{trans}}" bindinput="inputChange" required></textarea>
         </view>
         <view class="item">
           <label for="usphone">美式发音</label>
-          <input type="text" id="usphone" name="usphone" placeholder="请输入美式发音" />
+          <input type="text" id="usphone" name="usphone" placeholder="请输入美式发音" value="{{usphone}}" bindinput="inputChange" />
         </view>
         <view class="item">
           <label for="ukphone">英式发音</label>
-          <input type="text" id="ukphone" name="ukphone" placeholder="请输入英式发音" />
+          <input type="text" id="ukphone" name="ukphone" placeholder="请输入英式发音" value="{{ukphone}}" bindinput="inputChange" />
         </view>
         <view class="item">
           <label for="pos">词性</label>
-          <input type="text" id="pos" name="pos" placeholder="请输入词性" />
+          <input type="text" id="pos" name="pos" placeholder="请输入词性" value="{{pos}}" bindinput="inputChange" />
         </view>
         <view class="item">
           <label for="example">例句</label>
-          <textarea id="example" name="example" placeholder="请输入例句"></textarea>
+          <textarea id="example" name="example" placeholder="请输入例句" value="{{example}}" bindinput="inputChange"></textarea>
         </view>
       </view>
       <view class="footer">
-        <button type="submit" class="weui-btn weui-btn_primary">上传</button>
+        <button type="submit" class="weui-btn weui-btn_primary" bind:tap="onSubmit">上传</button>
       </view>
     </form>
   </view>

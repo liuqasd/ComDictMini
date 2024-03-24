@@ -8,10 +8,20 @@ Page({
     example: '',  //例句
   },
 
+  // 输入框内容变化时触发的事件处理函数
+  inputChange: function (e) {
+    const { id } = e.currentTarget;
+    const { value } = e.detail;
+    this.setData({
+      [id]: value
+    });
+  },
+
   // 上传词汇
   onSubmit: function() {
     const { name, trans, usphone, ukphone, pos, example } = this.data;
-
+    console.log("名称：", name);
+    console.log("翻译：", trans);
     // 验证输入信息
     if (!name || !trans) {
       wx.showToast({
@@ -27,7 +37,7 @@ Page({
 
     // 调用云函数上传词汇
     wx.cloud.callFunction({
-      name: 'addword',
+      name: 'uploadword',
       data: {
         name,
         trans,
