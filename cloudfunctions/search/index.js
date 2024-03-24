@@ -33,7 +33,7 @@ exports.main = async (event) => {
     }
 
     // 在第二个数据库中查询
-    result = await db.collection('newwordsfromusers').where({
+    result = await db.collection('LinuxCommand').where({
       name: wordName
     }).get();
 
@@ -46,7 +46,21 @@ exports.main = async (event) => {
       };
     }
 
-    // 在两个数据库中都没有找到匹配的单词
+    // 在第三个数据库中查询
+    result = await db.collection('newwordsfromusers').where({
+      name: wordName
+    }).get();
+
+    // 如果中找到匹配的单词，则返回结果
+    if (result.data.length > 0) {
+      return {
+        code: 200,
+        data: result.data,
+        message: '查询成功'
+      };
+    }
+
+    // 都没有找到匹配的单词
     return {
       code: 404,
       message: '未找到匹配的单词'
