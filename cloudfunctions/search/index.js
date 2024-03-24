@@ -18,25 +18,40 @@ exports.main = async (event) => {
       };
     }
 
-    // 执行简单的数据库查询
-    const result = await db.collection('ITVocabulary').where({
+    // 在第一个数据库中查询
+    let result = await db.collection('ITVocabulary').where({
       name: wordName
     }).get();
 
-    // 如果找到匹配的单词，则返回结果
+    // 如果在第一个数据库中找到匹配的单词，则返回结果
     if (result.data.length > 0) {
       return {
         code: 200,
         data: result.data,
         message: '查询成功'
       };
-    } else {
+    }
+
+    // 在第二个数据库中查询
+    result = await db.collection('newwordsfromusers').where({
+      name: wordName
+    }).get();
+
+    // 如果在第二个数据库中找到匹配的单词，则返回结果
+    if (result.data.length > 0) {
       return {
-        code: 404,
-        message: '未找到匹配的单词'
+        code: 200,
+        data: result.data,
+        message: '查询成功'
       };
     }
-  } catch (e) {
+
+    // 在两个数据库中都没有找到匹配的单词
+    return {
+      code: 404,
+      message: '未找到匹配的单词'
+    };
+    } catch (e) {
     return {
       code: 500,
       message: `查询失败: ${e}`
