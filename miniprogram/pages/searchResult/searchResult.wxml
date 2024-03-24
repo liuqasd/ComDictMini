@@ -43,14 +43,17 @@
       </block>
     </view>
     <!-- 未搜到提示 -->
-    <view wx:if="{{searchResults.length == 0}}" class="weui-msg">
-    <view class="weui-msg__icon-area">
-      <icon class="weui-icon-warn weui-icon_msg"></icon>
-    </view>
-    <view class="weui-msg__text-area">
-      <view class="weui-msg__title">未找到相关结果</view>
-      <view class="weui-msg__title">您可以选择上传或更换词条</view>
-    </view>
+    <view wx:if="{{searchResults.length == 0}}" class="card">
+      <view class="center">
+        <icon class="weui-icon-warn weui-icon_msg center"></icon>
+      </view>
+      <view class="weui-msg__title center">未找到相关结果</view>
+      <view class="weui-msg__title center">您可以选择上传或更换词条</view>
+      <navigator url="/pages/uploadWord/uploadWord" class="weui-cell">
+        <view class="weui-cell__bd center">
+          <text>上传新词</text>
+        </view>
+      </navigator>
     </view>
   </view>
 </view>
