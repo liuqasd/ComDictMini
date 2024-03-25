@@ -19,7 +19,7 @@
           <view class="icon_collection" bindtap="onCollectionTap" data-item="{{item}}">
             <image src="{{item.collected ? '/images/collected.png' : '/images/collection.png'}}" mode="widthFix" />
           </view>
-
+          <view class="source">来源：{{ item.source }}</view>
         </view>
         <view class="header_speech">
           <view class="phonetic">

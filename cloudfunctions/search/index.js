@@ -18,6 +18,9 @@ exports.main = async (event) => {
       };
     }
 
+    // 定义一个空数组来存储所有结果
+    const results = [];
+
     // 在第一个数据库中查询
     let result = await db.collection('ITVocabulary').where({
       name: {
@@ -25,14 +28,12 @@ exports.main = async (event) => {
       }
     }).get();
 
-    // 如果在第一个数据库中找到匹配的单词，则返回结果
-    if (result.data.length > 0) {
-      return {
-        code: 200,
-        data: result.data,
-        message: '查询成功'
-      };
-    }
+    // 添加来源信息
+    result.data.forEach(item => {
+      item.source = '计算机通用';
+    });
+    // 将结果添加到数组中
+    results.push(...result.data);
 
     // 在第二个数据库中查询
     result = await db.collection('LinuxCommand').where({
@@ -41,14 +42,12 @@ exports.main = async (event) => {
       }
     }).get();
 
-    // 如果在第二个数据库中找到匹配的单词，则返回结果
-    if (result.data.length > 0) {
-      return {
-        code: 200,
-        data: result.data,
-        message: '查询成功'
-      };
-    }
+    // 添加来源信息
+    result.data.forEach(item => {
+      item.source = 'Linux命令';
+    });
+    // 将结果添加到数组中
+    results.push(...result.data);
 
     // 在第三个数据库中查询
     result = await db.collection('AIMachineLearning').where({
@@ -57,14 +56,12 @@ exports.main = async (event) => {
       }
     }).get();
 
-    // 如果中找到匹配的单词，则返回结果
-    if (result.data.length > 0) {
-      return {
-        code: 200,
-        data: result.data,
-        message: '查询成功'
-      };
-    }
+    // 添加来源信息
+    result.data.forEach(item => {
+      item.source = '机器学习';
+    });
+    // 将结果添加到数组中
+    results.push(...result.data);
     
     // 在第四个数据库中查询
     result = await db.collection('newwordsfromusers').where({
@@ -73,11 +70,27 @@ exports.main = async (event) => {
       }
     }).get();
 
+    // 添加来源信息
+    result.data.forEach(item => {
+      item.source = '用户上传';
+    });
+    // 将结果添加到数组中
+    results.push(...result.data);
+
     // 如果中找到匹配的单词，则返回结果
-    if (result.data.length > 0) {
+    // if (result.data.length > 0) {
+    //   return {
+    //     code: 200,
+    //     data: result.data,
+    //     message: '查询成功'
+    //   };
+    // }
+
+    // 如果找到匹配的单词，则返回结果
+    if (results.length > 0) {
       return {
         code: 200,
-        data: result.data,
+        data: results,
         message: '查询成功'
       };
     }

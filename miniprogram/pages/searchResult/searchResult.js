@@ -69,7 +69,8 @@ Page({
                 trans: item.trans,
                 usphone: item.usphone,
                 ukphone: item.ukphone,
-                collected: isCollected // 添加字段表示是否已被收藏
+                collected: isCollected, // 添加字段表示是否已被收藏
+                source: item.source
               }
             });
 
