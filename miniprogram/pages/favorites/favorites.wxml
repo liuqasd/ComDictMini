@@ -10,13 +10,13 @@
       <view class="header_speech">
           <view class="phonetic">
             <view class="part-of-speech">
-                <text>/{{item.usphone}}/</text>
+                <text>美：/{{item.usphone}}/</text>
             </view>
             <view class="icon">
                 <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap0"></image>
             </view>
             <view class="part-of-speech">
-                <text>/{{item.ukphone}}/</text>
+                <text>英：/{{item.ukphone}}/</text>
             </view>
             <view class="icon" >
                 <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap1"></image>
