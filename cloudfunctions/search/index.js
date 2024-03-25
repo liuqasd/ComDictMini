@@ -20,7 +20,9 @@ exports.main = async (event) => {
 
     // 在第一个数据库中查询
     let result = await db.collection('ITVocabulary').where({
-      name: wordName
+      name: {
+        $regex: `.*${wordName}.*` // 使用正则表达式进行模糊匹配
+      }
     }).get();
 
     // 如果在第一个数据库中找到匹配的单词，则返回结果
@@ -34,7 +36,9 @@ exports.main = async (event) => {
 
     // 在第二个数据库中查询
     result = await db.collection('LinuxCommand').where({
-      name: wordName
+      name: {
+        $regex: `.*${wordName}.*` // 使用正则表达式进行模糊匹配
+      }
     }).get();
 
     // 如果在第二个数据库中找到匹配的单词，则返回结果
@@ -48,7 +52,9 @@ exports.main = async (event) => {
 
     // 在第三个数据库中查询
     result = await db.collection('AIMachineLearning').where({
-      name: wordName
+      name: {
+        $regex: `.*${wordName}.*` // 使用正则表达式进行模糊匹配
+      }
     }).get();
 
     // 如果中找到匹配的单词，则返回结果
@@ -62,7 +68,9 @@ exports.main = async (event) => {
     
     // 在第四个数据库中查询
     result = await db.collection('newwordsfromusers').where({
-      name: wordName
+      name: {
+        $regex: `.*${wordName}.*` // 使用正则表达式进行模糊匹配
+      }
     }).get();
 
     // 如果中找到匹配的单词，则返回结果
