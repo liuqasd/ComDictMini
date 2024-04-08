@@ -1,4 +1,5 @@
 <view class="container">
+  <!-- 单词卡片 -->
   <block wx:for="{{collectedWords}}" wx:key="unique">
     <view class="card">
       <view class="header">
@@ -28,7 +29,7 @@
       </view>
     </view>
   </block>
-
+  <!-- 未收藏提示 -->
   <view wx:if="{{collectedWords.length == 0}}">
     <text>您还没有收藏任何术语。</text>
   </view>
