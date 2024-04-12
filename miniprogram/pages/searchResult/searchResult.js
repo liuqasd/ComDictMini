@@ -125,6 +125,60 @@ Page({
       console.log('发音播放完成');
     });
   },
+    
+  onIconTapChinese: function(e) {
+    const wordArray = e.currentTarget.dataset.word;
+    const word = Array.isArray(wordArray) ? wordArray[0] : wordArray; // 获取数组的第一个元素或者直接使用单词
+    console.log("发音单词：", word);
+
+    wx.request({
+      url: 'https://tsn.baidu.com/text2audio',
+      data: {
+        tex: word,
+        lan: 'zh',
+        ctp: 1,
+        AppID: 61031662,
+        tok: '24.3ec9b62afc478fe75c28bec79bdbf19d.2592000.1715499766.282335-61031662',
+        cuid: 'Hne7RMhCtxP0h1awclgzQftCW20WoegR',
+        spd: 5,
+        pit: 5,
+        vol: 6,
+        per: 0,
+        aue: 3
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      responseType: 'arraybuffer', // 将响应的数据类型设置为 arraybuffer
+      success(res) {
+        // 将 arraybuffer 数据保存为临时文件
+        const arrayBuffer = res.data
+        console.log("音频文件：", arrayBuffer)
+
+        wx.getFileSystemManager().writeFile({
+          filePath: wx.env.USER_DATA_PATH + '/temp.mp3',
+          data: arrayBuffer,
+          encoding: 'binary',
+          success() {
+            // 获取保存的临时文件路径
+            const savedFilePath = wx.env.USER_DATA_PATH + '/temp.mp3'
+    
+            console.log("临时文件路径：", savedFilePath)
+            // 使用 <audio> 组件播放本地文件
+            const audioContext = wx.createInnerAudioContext()
+            audioContext.src = savedFilePath
+            audioContext.play()
+          },
+          fail(writeErr) {
+            console.error('保存文件失败', writeErr)
+          }
+        })
+      },
+      fail(err) {
+        console.error('请求失败', err)
+      }
+    })
+  },
   
   onCollectionTap(e) {
     const item = e.currentTarget.dataset.item;

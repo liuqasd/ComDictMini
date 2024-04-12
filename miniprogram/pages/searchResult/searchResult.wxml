@@ -39,6 +39,9 @@
         </view>
         <view class="body">
           <view class="definition">{{item.trans}}</view>
+          <view class="icon_speech" >
+            <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.trans}}" bindtap="onIconTapChinese"></image>
+          </view>
         </view>
       </view>
     </block>
