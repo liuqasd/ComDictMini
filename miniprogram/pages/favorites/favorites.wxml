@@ -11,23 +11,25 @@
       <view class="header_speech">
           <view class="phonetic">
             <view class="part-of-speech">
-                <text>美：/{{item.usphone}}/</text>
-            </view>
-            <view class="icon">
+              <text>美：/{{item.usphone}}/</text>
+              <view class="icon">
                 <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap0"></image>
+              </view>
             </view>
             <view class="part-of-speech">
-                <text>英：/{{item.ukphone}}/</text>
-            </view>
-            <view class="icon" >
+              <text>英：/{{item.ukphone}}/</text>
+              <view class="icon" >
                 <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.name}}" bindtap="onIconTap1"></image>
+              </view>
             </view>
           </view>
       </view>
       <view class="body">
-        <view class="definition">{{item.trans}}</view>
-        <view class="icon_speech" >
-          <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.trans}}" bindtap="onIconTapChinese"></image>
+        <view class="definition">
+          {{item.trans}}
+          <view class="icon_speech_chinese" >
+            <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.trans}}" bindtap="onIconTapChinese"></image>
+          </view>
         </view>
       </view>
     </view>

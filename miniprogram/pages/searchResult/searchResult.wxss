@@ -12,6 +12,8 @@
 
 .header {
   display: flex;
+  justify-content: space-between; /* 在标题和收藏按钮之间平均分配空间 */
+  align-items: center; /* 垂直居中对齐 */
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -24,11 +26,13 @@
 .title {
   font-size: 24px;
   font-weight: bold;
+  /* display: flex; */
 }
 
 .part-of-speech {
   font-size: 18px;
   color: #999;
+  display: flex;
 }
 
 .body {
@@ -36,13 +40,14 @@
 }
 
 .definition {
+  display: flex;
   font-size: 16px;
   margin-bottom: 10px;
 }
 
 /*音标*/
 .phonetic {
-  display: flex;
+  /* display: flex; */
   margin-right: 10px;
   flex-wrap: wrap;
 }
@@ -51,14 +56,18 @@
   width: 14px;
   height: 14px;
   margin-right: 52px;
+  margin-top: -4px;
   transform: scale(0.07);
 }
 
 .icon_collection {
   width: 22px;
   height: 22px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  margin-right: 20px;
+  margin-top: -30px;
   transform: scale(0.07);
+  margin-left: auto; /* 将收藏按钮靠最右边 */
 }
 
 .center {
@@ -69,5 +78,6 @@
 
 .source {
   font-size: 14px; 
-  margin-left: 60px;
+  /* margin-left: 60px; */
+  /* text-align: right; */
 }

@@ -57,7 +57,7 @@
   align-items: center;  /* 垂直居中 */
   justify-content: center;  /* 水平居中 */
   margin-top: 12px;
-  margin-bottom: -14px;
+  margin-bottom: -16px;
 }
 
 .card_hotwords {
@@ -109,5 +109,13 @@
 
 .source {
   font-size: 14px; 
-  margin-left: 60px;
+  /* margin-left: 60px; */
+}
+
+.icon_collection {
+  width: 22px;
+  height: 22px;
+  margin-right: 20px;
+  transform: scale(0.07);
+  margin-left: auto; /* 将收藏按钮靠最右边 */
 }

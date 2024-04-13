@@ -42,8 +42,10 @@
     <block wx:for="{{searchResults}}" wx:key="unique">
       <view class="card" bind:tap="onSearchHotWords" data-item="{{item}}">
         <view class="header">
-          <view class="title">{{item.name}}</view>
-          <view class="source">来源：{{ item.source.source }}</view>
+          <view class="title">
+            {{item.name}}
+            <view class="source">来源：{{ item.source.source }}</view>
+          </view>
         </view>
         <view class="body">
           <view class="definition">{{item.trans}}</view>

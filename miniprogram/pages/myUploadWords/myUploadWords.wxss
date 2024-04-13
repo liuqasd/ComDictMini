@@ -47,6 +47,7 @@
 .part-of-speech {
   font-size: 18px;
   color: #999;
+  display: flex;
 }
 
 .body {
@@ -56,11 +57,12 @@
 .definition {
   font-size: 16px;
   margin-bottom: 10px;
+  display: flex;
 }
 
 /*音标*/
 .phonetic {
-  display: flex;
+  /* display: flex; */
   margin-right: 10px;
   flex-wrap: wrap;
 }
@@ -69,12 +71,15 @@
   width: 14px;
   height: 14px;
   margin-right: 52px;
+  margin-left: 4px;
+  margin-top: -2px;
   transform: scale(0.07);
 }
 
 .icon_speech {
   width: 14px;
   height: 14px;
-  margin-right: 52px;
+  margin-left: 4px;
   transform: scale(0.07);
+  margin-top: -5px;
 }
