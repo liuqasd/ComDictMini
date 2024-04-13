@@ -34,6 +34,40 @@
 /* 增加功能列表宽度 */
 .custom-weui-cells {
   width: 100%; /* 设置功能列表宽度为100% */
+  display: grid;
+  align-items: center;  /* 垂直居中 */
+  justify-content: center;  /* 水平居中 */
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.card_list {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 680rpx;
+  display: flex;
+  align-items: center;  /* 垂直居中 */
+  justify-content: center;  /* 水平居中 */
+  margin-bottom: 6px;
+}
+
+.hotwords {
+  display: flex;
+  align-items: center;  /* 垂直居中 */
+  justify-content: center;  /* 水平居中 */
+  margin-top: 12px;
+  margin-bottom: -14px;
+}
+
+.card_hotwords {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 680rpx;
+  display: flex;
+  align-items: center;  /* 垂直居中 */
+  justify-content: center;  /* 水平居中 */
 }
 
 .container {

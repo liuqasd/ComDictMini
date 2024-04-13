@@ -11,17 +11,30 @@
   </view>
 
   <!-- 功能列表区域 -->
-  <view class="weui-cells custom-weui-cells">
-    <navigator url="/pages/searchResult/searchResult" class="weui-cell weui-cell_access">
-      <view class="weui-cell__bd">
-        <text>搜索记录</text>
+  <view class="custom-weui-cells">
+    <view class="card_list">
+      <navigator url="/pages/searchResult/searchResult" class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <text>搜索记录</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="card_list">
+      <navigator url="/pages/uploadWord/uploadWord" class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <text>上传新词</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- 随机热词展示 -->
+  <view class="hotwords">
+    <view class="card_hotwords">
+      <view class="header">
+        <text>热词展示</text>
       </view>
-    </navigator>
-    <navigator url="/pages/uploadWord/uploadWord" class="weui-cell weui-cell_access">
-      <view class="weui-cell__bd">
-        <text>上传新词</text>
-      </view>
-    </navigator>
+    </view>
   </view>
 
   <!-- 随机单词卡片 -->
