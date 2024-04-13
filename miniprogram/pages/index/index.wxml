@@ -1,4 +1,5 @@
 <view>
+  <!-- 搜索框 -->
   <view class="weui-search-bar" id="searchBar">
     <form bindsubmit="onSearchSubmit"> <!-- 绑定表单的提交事件 -->
     <div class="weui-search-bar__box" bind:tap="onSearchIconClick">
@@ -21,5 +22,24 @@
         <text>上传新词</text>
       </view>
     </navigator>
+  </view>
+
+  <!-- 随机单词卡片 -->
+  <view class="container">
+    <block wx:for="{{searchResults}}" wx:key="unique">
+      <view class="card">
+        <view class="header">
+          <view class="title">{{item.name}}</view>
+          <!-- 检查是否已收藏，如果已收藏则显示不同样式的收藏按钮 -->
+          <view class="icon_collection" bindtap="onCollectionTap" data-item="{{item}}">
+            <image src="{{item.collected ? '/images/collected.png' : '/images/collection.png'}}" mode="widthFix" />
+          </view>
+          <view class="source">来源：{{ item.source.source }}</view>
+        </view>
+        <view class="body">
+          <view class="definition">{{item.trans}}</view>
+        </view>
+      </view>
+    </block>
   </view>
 </view>

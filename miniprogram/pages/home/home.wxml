@@ -13,7 +13,13 @@
   <view class="weui-cells">
     <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
       <view class="weui-cell__bd">
-        <text>收藏</text>
+        <text>我的收藏</text>
+      </view>
+      <view class="weui-cell__ft"></view>
+    </navigator>
+    <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <text>我的上传</text>
       </view>
       <view class="weui-cell__ft"></view>
     </navigator>

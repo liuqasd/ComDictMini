@@ -2,7 +2,23 @@ Page({
   data: {
     // 页面的初始数据
     inputFocus: false,
-    searchText: "" // 存储搜索关键词
+    searchText: "", // 存储搜索关键词
+    searchResults: []
+  },
+
+  onLoad() {
+    // 获取随机单词数据
+    wx.cloud.callFunction({
+      name: 'hotwords',
+      success: (res) => {
+        console.log('云函数返回的数据：', res.result)
+        this.setData({ searchResults: res.result.data })
+        console.log('searchResults：', this.data.searchResults)
+      },
+      fail: (err) => {
+        console.error('获取随机单词数据失败:', err)
+      }
+    })
   },
 
   onSearchIconClick: function() {
