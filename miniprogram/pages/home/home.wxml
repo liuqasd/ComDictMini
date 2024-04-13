@@ -1,3 +1,4 @@
+<!-- 用户信息区域 -->
 <view class="weui-panel user-info-container">
   <view class="weui-media-box weui-media-box_appmsg">
     <div class="weui-media-box__hd">
@@ -9,6 +10,7 @@
   </view>
 </view>
 
+<!-- 功能列表区域 -->
 <view class="weui-panel__bd">
   <view class="weui-cells">
     <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
@@ -29,7 +31,7 @@
       </view>
       <view class="weui-cell__ft"></view>
     </navigator>
-    <navigator url="/pages/favorites/favorites" class="weui-cell weui-cell_access">
+    <navigator url="/pages/about/about" class="weui-cell weui-cell_access">
       <view class="weui-cell__bd">
         <text>关于</text>
       </view>
@@ -38,6 +40,7 @@
   </view>
 </view>
 
+<!-- 登录区域 -->
 <view class="weui-panel user-info-container">
   <view class="weui-panel__ft" wx:if="{{ ! isLoggedIn }}">
     <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">请登录</button>

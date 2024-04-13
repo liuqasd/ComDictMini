@@ -4,4 +4,3 @@
 ## TODO 检查同一个词只能上传一次
 ## TODO 搜索记录
 ## TODO 反馈和关于
-## TODO 在index展示一些单词card

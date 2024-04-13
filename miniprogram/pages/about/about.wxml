@@ -1,0 +1,38 @@
+<!-- 关于页面 -->
+<view class="about-page">
+  <!-- 页面标题 -->
+  <view class="page-title">关于我们</view>
+
+  <!-- 应用信息卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">计算机专业词汇小程序</text>
+    </view>
+    <view class="card-content">
+      <text class="content-text">计算机专业词汇小程序是一个专注于计算机专业词汇查询与分享的小程序，提供词汇查找与单词发音功能，帮助用户对计算机专业词汇更好地学习。</text>
+    </view>
+  </view>
+
+  <!-- 开发团队信息卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">开发团队</text>
+    </view>
+    <view class="card-content">
+      <text class="content-text">- 开发者：liuqasd\n</text>
+      <text class="content-text">- 联系方式：liuqasd@duck.com</text>
+    </view>
+  </view>
+
+  <!-- 致谢信息卡片 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">致谢</text>
+    </view>
+    <view class="card-content">
+      <text class="content-text">我们感谢所有为计算机专业词汇小程序提供建议和支持的用户和贡献者。</text>
+    </view>
+  </view>
+
+  <!-- 其他内容... -->
+</view>
