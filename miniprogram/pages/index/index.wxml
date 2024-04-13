@@ -43,10 +43,6 @@
       <view class="card" bind:tap="onSearchHotWords" data-item="{{item}}">
         <view class="header">
           <view class="title">{{item.name}}</view>
-          <!-- 检查是否已收藏，如果已收藏则显示不同样式的收藏按钮 -->
-          <view class="icon_collection" bindtap="onCollectionTap" data-item="{{item}}">
-            <image src="{{item.collected ? '/images/collected.png' : '/images/collection.png'}}" mode="widthFix" />
-          </view>
           <view class="source">来源：{{ item.source.source }}</view>
         </view>
         <view class="body">

@@ -1,13 +1,13 @@
 Page({
   data: {
-    collectedWords: []
+    uploadedWords: []
   },
   onLoad: function() {
-    this.getCollectedWords();
+    this.getUploadedWords();
   },
 
   // 调用云函数获取已收藏的词汇列表
-  getCollectedWords: function() {
+  getUploadedWords: function() {
     const openid = wx.getStorageSync('openid');
     if (!openid) {
       console.log('未获取到用户 ID!');
@@ -15,14 +15,12 @@ Page({
     }
 
     wx.cloud.callFunction({
-      name: 'getcollectedwords',
+      name: 'getuploadedwords',
       success: res => {
-        // console.log('已收藏的词汇列表：', res.result.data);
         this.setData({ collectedWords: res.result.data });
-        // console.log('存储的已收藏的词汇列表collectedWords：', this.data.collectedWords);
       },
       fail: err => {
-        console.error('获取已收藏的词汇列表失败：', err);
+        console.error('获取已上传的词汇列表失败：', err);
       }
     });
   },

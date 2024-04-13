@@ -3,10 +3,7 @@
   <block wx:for="{{collectedWords}}" wx:key="unique">
     <view class="card">
       <view class="header">
-          <view class="title">{{item.name}}</view>
-          <view class="icon_collection" bindtap="onUnfavorite" data-item="{{item}}">
-            <image src='/images/collected.png' mode="widthFix" />
-          </view>
+        <view class="title">{{item.name}}</view>
       </view>
       <view class="header_speech">
           <view class="phonetic">
@@ -26,7 +23,7 @@
       </view>
       <view class="body">
         <view class="definition">{{item.trans}}</view>
-        <view class="icon_speech" >
+				<view class="icon_speech" >
           <image src="{{'/images/speaker.svg'}}" mode="widthFix" data-word="{{item.trans}}" bindtap="onIconTapChinese"></image>
         </view>
       </view>
@@ -34,6 +31,6 @@
   </block>
   <!-- 未收藏提示 -->
   <view wx:if="{{collectedWords.length == 0}}">
-    <text>您还没有收藏任何术语。</text>
+    <text>您还没有上传任何术语。</text>
   </view>
 </view>
