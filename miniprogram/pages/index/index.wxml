@@ -40,7 +40,7 @@
   <!-- 随机单词卡片 -->
   <view class="container">
     <block wx:for="{{searchResults}}" wx:key="unique">
-      <view class="card">
+      <view class="card" bind:tap="onSearchHotWords" data-item="{{item}}">
         <view class="header">
           <view class="title">{{item.name}}</view>
           <!-- 检查是否已收藏，如果已收藏则显示不同样式的收藏按钮 -->

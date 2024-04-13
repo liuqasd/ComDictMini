@@ -45,5 +45,15 @@ Page({
     wx.navigateTo({
       url: '/pages/searchResult/searchResult?searchText=' + searchText
     });
+  },
+
+  onSearchHotWords: function(e) {
+    // 获取点击的单词名称
+    const hotword = e.currentTarget.dataset.item;
+    // 点击热词卡片跳转
+    console.log('跳转词汇：', hotword.name);
+    wx.navigateTo({
+      url: '/pages/searchResult/searchResult?searchText=' + hotword.name
+    });
   }
 })
