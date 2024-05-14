@@ -138,7 +138,7 @@ Page({
         lan: 'zh',
         ctp: 1,
         AppID: 61031662,
-        tok: '24.3ec9b62afc478fe75c28bec79bdbf19d.2592000.1715499766.282335-61031662',
+        tok: '24.204c1d69e34a60089fb0e5d78cabd560.2592000.1718290606.282335-61031662',
         cuid: 'Hne7RMhCtxP0h1awclgzQftCW20WoegR',
         spd: 5,
         pit: 5,
