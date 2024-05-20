@@ -3,6 +3,11 @@ Page({
     searchResults: [],
     searchText: "",   // 存储搜索关键词
     collectedWords: [], // 已收藏的词汇列表
+    searchTextForShare: [], // 存储当前展示的单词信息用于分享
+  },
+
+  options: {
+    enableShareAppMessage: true
   },
 
   onLoad: function(options) {
@@ -324,4 +329,20 @@ Page({
     });
     wx.stopPullDownRefresh(); // 停止下拉刷新动画
   },
+
+  onShareAppMessage() {
+    const searchResults = this.data.searchResults;
+    if (searchResults.length > 0) {
+      const currentWord = searchResults[0];
+      return {
+        title: '我向你分享了一个计算机专业词汇词条：' + currentWord.name,
+        path: '/pages/searchResult/searchResult?searchText=' + encodeURIComponent(currentWord.name)
+      }
+    } else {
+      return {
+        title: '我向你分享了一个计算机专业词汇词条',
+        path: '/pages/index/index'
+      }
+    }
+  }  
 })

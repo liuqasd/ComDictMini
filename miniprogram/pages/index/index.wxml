@@ -12,13 +12,13 @@
 
   <!-- 功能列表区域 -->
   <view class="custom-weui-cells">
-    <view class="card_list">
+    <!-- <view class="card_list">
       <navigator url="/pages/searchResult/searchResult" class="weui-cell weui-cell_access">
         <view class="weui-cell__bd">
           <text>搜索记录</text>
         </view>
       </navigator>
-    </view>
+    </view> -->
     <view class="card_list">
       <navigator url="/pages/uploadWord/uploadWord" class="weui-cell weui-cell_access">
         <view class="weui-cell__bd">
