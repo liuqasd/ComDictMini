@@ -31,6 +31,8 @@
         	</view>
 				</view>
 				<view class="definition">例句：{{item.example}}</view>
+        <view class="definition">上传时间：{{item.createTime}}</view>
+        <button data-item="{{item}}" bind:tap="onCancelUpload">撤销上传</button>
       </view>
     </view>
   </block>

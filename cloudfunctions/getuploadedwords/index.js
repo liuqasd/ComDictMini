@@ -10,9 +10,12 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   try {
     const openid = cloud.getWXContext().OPENID;
-    const res = await db.collection('newwordsfromusers').where({
+    const res = await db.collection('newwordsfromusers')
+    .where({
       openid: openid
-    }).get();
+    })
+    .orderBy('createTime', 'desc')  //按照上传时间降序排序
+    .get();
     return res;
   } catch (err) {
     console.error(err);

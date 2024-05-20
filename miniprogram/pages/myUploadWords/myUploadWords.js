@@ -16,9 +16,23 @@ Page({
 
     wx.cloud.callFunction({
       name: 'getuploadedwords',
+      data: {
+        orderBy: 'createTime',  //指定排序字段为上传时间
+        order: 'desc' //指定排序方式为降序
+      },
       success: res => {
-        this.setData({ upLoadedWords: res.result.data });
-        console.log('已上传的词汇列表：', res.result.data);
+        // 将时间戳转换为标准时间格式
+        const uploadedWordsWithStandardTime = res.result.data.map(item => {
+          const standardTime = new Date(item.createTime);
+          item.createTime = standardTime.toLocaleString(); // 转换为本地时间格式，也可以根据需要格式化
+          return item;
+        });
+
+        this.setData({ upLoadedWords: uploadedWordsWithStandardTime });
+        console.log('已上传的词汇列表：', uploadedWordsWithStandardTime);
+        
+        // this.setData({ upLoadedWords: res.result.data });
+        // console.log('已上传的词汇列表：', res.result.data);
       },
       fail: err => {
         console.error('获取已上传的词汇列表失败：', err);
@@ -26,54 +40,27 @@ Page({
     });
   },
 
-  onUnfavorite: function(e) {
-    const id = e.currentTarget.dataset.id;
-    const item = this.data.collectedWords.find(item => item.id === id);
-  
-    // 判断用户是否登录
-    const openid = wx.getStorageSync('openid');
-    if (!openid) {
-      wx.showToast({
-        title: '收藏失败，请登录',
-        icon: 'none',
-        duration: 2000,
-      });
-      return;
-    }
-  
-    // 调用云函数从收藏集合中删除词汇
+  // 在页面的事件处理函数中调用云函数来撤销上传
+  onCancelUpload(event) {
+    const item = event.currentTarget.dataset.item;
+    console.log("要撤销上传的单词信息：", item);
+    
     wx.cloud.callFunction({
-      name: 'removecollection',
+      name: 'cancelupload',
       data: {
-        name: item.name, // 传递要取消收藏的词条名称
-        openid, // 传递用户的 OpenID
+        openid: item.openid, // 传递要撤销的用户ID
+        name: item.name // 传递要撤销的词条名称
       },
       success: res => {
-        console.log('取消收藏成功', res.result);
-  
-        // 更新页面数据
-        const collectedWords = this.data.collectedWords.filter(word => word.id !== id);
-        this.setData({ collectedWords });
-  
-        // 显示取消收藏成功提示
-        wx.showToast({
-          title: '取消收藏成功',
-          icon: 'success',
-          duration: 2000,
-        });
+        console.log('撤销上传成功', res.result);
+        // 执行撤销上传成功后的操作，例如刷新页面或提示用户撤销成功
       },
       fail: err => {
-        console.error('取消收藏失败', err);
-  
-        // 显示取消收藏失败提示
-        wx.showToast({
-          title: '取消收藏失败，请登录',
-          icon: 'none',
-          duration: 2000,
-        });
-      },
+        console.error('撤销上传失败', err);
+        // 执行撤销上传失败后的操作，例如提示用户撤销失败
+      }
     });
-  },  
+  },
 
   onIconTap0: function(e) {
     const word = e.currentTarget.dataset.word;
@@ -123,7 +110,7 @@ Page({
         lan: 'zh',
         ctp: 1,
         AppID: 61031662,
-        tok: '24.3ec9b62afc478fe75c28bec79bdbf19d.2592000.1715499766.282335-61031662',
+        tok: '24.204c1d69e34a60089fb0e5d78cabd560.2592000.1718290606.282335-61031662',
         cuid: 'Hne7RMhCtxP0h1awclgzQftCW20WoegR',
         spd: 5,
         pit: 5,
@@ -167,7 +154,7 @@ Page({
 
   // 下拉刷新触发的事件
   onPullDownRefresh() {
-    this.getCollectedWords(); // 重新拉取收藏数据
+    this.getUploadedWords(); // 重新拉取收藏数据
     wx.stopPullDownRefresh(); // 停止下拉刷新动画
   },
 })
